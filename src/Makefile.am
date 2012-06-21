@@ -2,7 +2,8 @@
 bin_PROGRAMS = resonance
 resonance_SOURCES = AeroButton.cpp BinauralTone.cpp drawerwidget.cpp FMOD_Sound.cpp main.cpp QTranscluentWidget.cpp ResoModule.cpp Resonance.cpp ResoStyle.cpp ResoTree.cpp moc_AeroButton.cpp moc_drawerwidget.cpp moc_QTranscluentWidget.cpp moc_Resonance.cpp moc_ResoTree.cpp moc_BinauralTone.cpp moc_FMOD_Sound.cpp moc_ResoModule.cpp moc_ResoStyle.cpp
 
-AM_CXXFLAGS = @QT_CXXFLAGS@
+AM_CXXFLAGS = @LIBQTCORE_CFLAGS@ @LIBQTGUI_CFLAGS@ -I/usr/local/include/fmodex
+AM_LIBS     = @LIBQTCORE_LIBS@ @LIBQTGUI_CFLAGS@ -L/usr/local/lib -lfmodex
 MOC         = @QT_MOC@
 
 moc_%.cc:	%.h

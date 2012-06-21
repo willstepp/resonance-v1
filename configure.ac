@@ -16,7 +16,9 @@ AC_PROG_CXX
 AC_PROG_CC
 
 # Checks for libraries.
-AX_HAVE_QT
+PKG_CHECK_MODULES(LIBQTCORE, QtCore)
+PKG_CHECK_MODULES(LIBQTGUI, QtGui)
+
 # Checks for header files.
 
 # Checks for typedefs, structures, and compiler characteristics.
