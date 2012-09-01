@@ -91,7 +91,8 @@ m_pre_fade_out_volume(50)
 	}
 	if(m_playing)
 	{
-		m_pause_button->setHighlight(QColor(Qt::red));
+		QColor m_pause_highlight = QColor(Qt::red);
+		m_pause_button->setHighlight(m_pause_highlight);
 		m_pause_button->setToolTip("pause");
 		m_pause_button->setIcon(QIcon("images/pause.png"));
 		m_pause_button->setIconSize(QSize(15, 15));
@@ -180,7 +181,8 @@ void Resonance::togglePlay()
 		}
 		m_pause_button->setIcon(QIcon("images/play.png"));
 		m_pause_button->setIconSize(QSize(15, 15));
-		m_pause_button->setHighlight(QColor(Qt::green));
+		QColor m_pause_highlight = QColor(Qt::green);
+		m_pause_button->setHighlight(m_pause_highlight);
 		m_pause_button->setToolTip("play");
 
 		if(isVisible())
@@ -203,7 +205,8 @@ void Resonance::togglePlay()
 		}
 		m_pause_button->setIcon(QIcon("images/pause.png"));
 		m_pause_button->setIconSize(QSize(15, 15));
-		m_pause_button->setHighlight(QColor(Qt::red));
+		QColor m_pause_highlight = QColor(Qt::red);
+		m_pause_button->setHighlight(m_pause_highlight);
 		m_pause_button->setToolTip("pause");
 
 		if(isVisible())
@@ -363,7 +366,8 @@ void Resonance::startSoundTimeout()
 	m_stop_sounds_ms = m_timer_spin->value() * 60 * 1000;
 
 	m_timer_button->setCheckable(false);
-	m_timer_button->setHighlight(QColor(Qt::red));
+	QColor m_timer_highlight = QColor(Qt::red);
+	m_timer_button->setHighlight(m_timer_highlight);
 	m_timer_button->setToolTip("stop timer");
 	disconnect(m_timer_button, SIGNAL(toggled(bool)), this, SLOT(toggleTimer(bool)));
 	connect(m_timer_button, SIGNAL(clicked()), this, SLOT(stopSoundTimeout()));
@@ -393,7 +397,8 @@ void Resonance::stopSoundTimeout()
 	m_system_tray_icon->setToolTip("resonance");
 
 	m_timer_button->setCheckable(true);
-	m_timer_button->setHighlight(QColor(Qt::green));
+	QColor m_timer_highlight = QColor(Qt::green);
+	m_timer_button->setHighlight(m_timer_highlight);
 	m_timer_button->setToolTip("start timer");
 	disconnect(m_timer_button, SIGNAL(clicked()), this, SLOT(stopSoundTimeout()));
 	connect(m_timer_button, SIGNAL(toggled(bool)), this, SLOT(toggleTimer(bool)));
@@ -763,7 +768,8 @@ void Resonance::timerEvent(QTimerEvent * te)
 
 		m_pause_button->setIcon(QIcon("images/play.png"));
 		m_pause_button->setIconSize(QSize(15, 15));
-		m_pause_button->setHighlight(QColor(Qt::green));
+		QColor m_pause_highlight = QColor(Qt::green);
+		m_pause_button->setHighlight(m_pause_highlight);
 		m_pause_button->setToolTip("play");
 
 		m_system_tray_icon->setToolTip("resonance");
@@ -987,7 +993,8 @@ void Resonance::setupGUI()
 	m_preset_line_edit->setFocusPolicy(Qt::StrongFocus);
 
 	AeroButton * save_preset_button = new AeroButton();
-	save_preset_button->setHighlight(QColor(Qt::red));
+	QColor save_preset_highlight = QColor(Qt::red);
+	save_preset_button->setHighlight(save_preset_highlight);
 	save_preset_button->setText(tr("save"));
 	save_preset_button->setRoundness(10);
 	save_preset_button->setMinimumWidth(110);
@@ -1002,10 +1009,10 @@ void Resonance::setupGUI()
 	preset_enter_layout->addStretch(1);
 
 	AeroButton * preset_bg_button = new AeroButton();
-	preset_bg_button->setGlassOpacity(0.0);
+	//preset_bg_button->setGlassOpacity(0.0);
 	preset_bg_button->setRoundness(2);
 	preset_bg_button->setOpacity(0.15);
-	preset_bg_button->setDecoration(true);
+	//preset_bg_button->setDecoration(true);
 	preset_bg_button->setMinimumHeight(50);
 
 	preset_bg_button->setLayout(preset_enter_layout);
@@ -1035,14 +1042,15 @@ void Resonance::setupGUI()
 	m_bg_flow->setSlideSize(QSize(250, 188));
 	m_bg_flow->setModel(&model);
 	m_bg_flow->setMinimumHeight(275);
-	m_bg_flow->setBackgroundColor(QColor(Qt::black));
+	QColor m_bg_flow_background = QColor(Qt::black);
+	m_bg_flow->setBackgroundColor(m_bg_flow_background);
 	connect(m_bg_flow, SIGNAL(newImageChosen(QString)), this, SLOT(newBackgroundInfo(QString)));
 
 	AeroButton * visuals_bg_button = new AeroButton();
-	visuals_bg_button->setGlassOpacity(0.0);
+	//visuals_bg_button->setGlassOpacity(0.0);
 	visuals_bg_button->setRoundness(2);
 	visuals_bg_button->setOpacity(0.15);
-	visuals_bg_button->setDecoration(true);
+	//visuals_bg_button->setDecoration(true);
 	visuals_bg_button->setMinimumHeight(50);
 
 	m_bg_label = new QLabel();
@@ -1054,7 +1062,8 @@ void Resonance::setupGUI()
 	newBackgroundInfo(info.at(0).fileName());
 
 	m_bg_set_button = new AeroButton();
-	m_bg_set_button->setHighlight(QColor(Qt::yellow));
+	QColor color_yellow = QColor(Qt::yellow);
+	m_bg_set_button->setHighlight(color_yellow);
 	m_bg_set_button->setText(tr("set background"));
 	m_bg_set_button->setMinimumWidth(110);
 	m_bg_set_button->setRoundness(10);
@@ -1086,10 +1095,10 @@ void Resonance::setupGUI()
 	help_background->setOpacity(0.96);
 
 	AeroButton * help_bg_button = new AeroButton();
-	help_bg_button->setGlassOpacity(0.0);
+	//help_bg_button->setGlassOpacity(0.0);
 	help_bg_button->setRoundness(2);
 	help_bg_button->setOpacity(0.15);
-	help_bg_button->setDecoration(true);
+	//help_bg_button->setDecoration(true);
 	help_bg_button->setMinimumHeight(50);
 
 	m_reso_about_label = new QLabel();
@@ -1134,7 +1143,7 @@ void Resonance::setupGUI()
 
 	//tutorial
 	AeroButton * tutorial_button = new AeroButton(tr("tutorial"));
-	tutorial_button->setGlassOpacity(0.0);
+	//tutorial_button->setGlassOpacity(0.0);
 	tutorial_button->setRoundness(2);
 	tutorial_button->setOpacity(0.15);
 	tutorial_button->setCheckable(true);
@@ -1142,7 +1151,7 @@ void Resonance::setupGUI()
 	tutorial_button->setChecked(true);
 
 	AeroButton * binaural_button = new AeroButton(tr("binaural"));
-	binaural_button->setGlassOpacity(0.0);
+	//binaural_button->setGlassOpacity(0.0);
 	binaural_button->setRoundness(2);
 	binaural_button->setOpacity(0.15);
 	binaural_button->setCheckable(true);
@@ -1187,7 +1196,8 @@ void Resonance::setupGUI()
 	m_help_layout->addWidget(help_bg_button);
 
 	AeroButton * about_button = new AeroButton();
-	about_button->setHighlight(QColor(2, 135, 237));
+	QColor about_highlight = QColor(2, 135, 237);
+	about_button->setHighlight(about_highlight);
 	about_button->setText(tr("about"));
 	about_button->setMinimumWidth(110);
 	about_button->setRoundness(10);
@@ -1196,7 +1206,8 @@ void Resonance::setupGUI()
 	about_button->setChecked(true);
 
 	AeroButton * guide_button = new AeroButton();
-	guide_button->setHighlight(QColor(2, 135, 237));
+	QColor guide_highlight = QColor(2, 135, 237);
+	guide_button->setHighlight(guide_highlight);
 	guide_button->setText(tr("guide"));
 	guide_button->setMinimumWidth(110);
 	guide_button->setRoundness(10);
@@ -1204,7 +1215,8 @@ void Resonance::setupGUI()
 	guide_button->setCheckable(true);
 
 	AeroButton * www_button = new AeroButton();
-	www_button->setHighlight(QColor(175, 0, 175));
+	QColor www_highlight = QColor(175, 0, 175);
+	www_button->setHighlight(www_highlight);
 	www_button->setText(tr("web"));
 	www_button->setMinimumWidth(110);
 	www_button->setRoundness(10);
@@ -1228,8 +1240,12 @@ void Resonance::setupGUI()
 
 	help_background->setLayout(m_help_layout);
 
+	QColor color_white = QColor(Qt::white);
+	QColor color_green = QColor(Qt::green);
+
 	m_help_button = new AeroButton();
-	m_help_button->setHighlight(QColor(2, 135, 237));
+	QColor help_highlight = QColor(2, 135, 237);
+	m_help_button->setHighlight(help_highlight);
 	m_help_button->setIcon(QIcon("images/help.png"));
 	m_help_button->setIconSize(QSize(15, 14));
 	m_help_button->setRoundness(10);
@@ -1239,7 +1255,7 @@ void Resonance::setupGUI()
 	m_help_button->setCheckable(true);
 
 	m_pause_button = new AeroButton();
-	m_pause_button->setHighlight(QColor(Qt::green));
+	m_pause_button->setHighlight(color_green);
 	m_pause_button->setIcon(QIcon("images/play.png"));
 	m_pause_button->setIconSize(QSize(15, 15));
 	m_pause_button->setRoundness(10);
@@ -1249,7 +1265,7 @@ void Resonance::setupGUI()
 	connect(m_pause_button, SIGNAL(clicked()), this, SLOT(togglePlay()));
 
 	m_module_button = new AeroButton();
-	m_module_button->setHighlight(QColor(Qt::white));
+	m_module_button->setHighlight(color_white);
 	m_module_button->setText("modules");
 	m_module_button->setCheckable(true);
 	m_module_button->setRoundness(10);
@@ -1260,7 +1276,7 @@ void Resonance::setupGUI()
 	m_module_button->setChecked(true);
 
 	m_presets_button = new AeroButton();
-	m_presets_button->setHighlight(QColor(Qt::white));
+	m_presets_button->setHighlight(color_white);
 	m_presets_button->setText("presets");
 	m_presets_button->setCheckable(true);
 	m_presets_button->setRoundness(10);
@@ -1270,7 +1286,7 @@ void Resonance::setupGUI()
 	m_presets_button->setCheckable(true);
 
 	m_visual_button = new AeroButton();
-	m_visual_button->setHighlight(QColor(Qt::white));
+	m_visual_button->setHighlight(color_white);
 	m_visual_button->setText("visual");
 	m_visual_button->setCheckable(true);
 	m_visual_button->setRoundness(10);
@@ -1288,7 +1304,7 @@ void Resonance::setupGUI()
 	connect(m_window_buttons, SIGNAL(buttonClicked(int)), this, SLOT(toggleMainWindows(int)));
 
 	m_timer_button = new AeroButton();
-	m_timer_button->setHighlight(QColor(Qt::green));
+	m_timer_button->setHighlight(color_green);
 	m_timer_button->setIcon(QIcon("images/timer_two.png"));
 	m_timer_button->setIconSize(QSize(20, 20));
 	m_timer_button->setRoundness(10);
@@ -1305,7 +1321,7 @@ void Resonance::setupGUI()
 	m_timer_spin->hide();
 
 	m_go_button = new AeroButton();
-	m_go_button->setHighlight(QColor(Qt::green));
+	m_go_button->setHighlight(color_green);
 	m_go_button->setText(">>");
 	m_go_button->setRoundness(10);
 	m_go_button->setFixedSize(27, 27);

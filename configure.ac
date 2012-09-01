@@ -18,6 +18,7 @@ AC_PROG_CC
 # Checks for libraries.
 PKG_CHECK_MODULES(LIBQTCORE, QtCore)
 PKG_CHECK_MODULES(LIBQTGUI, QtGui)
+PKG_CHECK_MODULES(LIBQTXML, QtXml)
 
 # Checks for header files.
 

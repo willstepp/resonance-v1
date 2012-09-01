@@ -808,10 +808,14 @@ void ResoModule::updateWhiteNoiseVolume(int volume)
 
 void ResoModule::setupGUI()
 {
+	QColor m_red = QColor(Qt::red);
+	QColor m_green = QColor(Qt::green);
+	QColor m_yellow = QColor(Qt::yellow);
+
 	//MINIMIZED SETUP
 	m_min_module = new AeroButton();
-	m_min_module->setHighlight(QColor(Qt::red));
-	m_min_module->setGlassOpacity(0.00);
+	m_min_module->setHighlight(m_red);
+	//m_min_module->setGlassOpacity(0.00);
 	m_min_module->setRoundness(2);
 	m_min_module->setMaximumHeight(50);
 	m_min_module->setOpacity(0.15);
@@ -834,8 +838,8 @@ void ResoModule::setupGUI()
 
 	//MAXIMIZED SETUP
 	m_max_module = new AeroButton();
-	m_max_module->setHighlight(QColor(Qt::red));
-	m_max_module->setGlassOpacity(0.00);
+	m_max_module->setHighlight(m_red);
+	//m_max_module->setGlassOpacity(0.00);
 	m_max_module->setRoundness(2);
 	m_max_module->setMaximumHeight(300);
 	m_max_module->setOpacity(0.15);
@@ -1165,7 +1169,7 @@ void ResoModule::setupGUI()
 	//sound properties
 	AeroButton * nature_button = new AeroButton();
 	nature_button->setCheckable(true);
-	nature_button->setHighlight(QColor(Qt::green));
+	nature_button->setHighlight(m_green);
 	nature_button->setMinimumHeight(40);
 	nature_button->setMaximumWidth(80);
 	nature_button->setRoundness(10);
@@ -1174,7 +1178,7 @@ void ResoModule::setupGUI()
 
 	AeroButton * civilization_button = new AeroButton();
 	civilization_button->setCheckable(true);
-	civilization_button->setHighlight(QColor(Qt::yellow));
+	civilization_button->setHighlight(m_yellow);
 	civilization_button->setMinimumHeight(40);
 	civilization_button->setMaximumWidth(80);
 	civilization_button->setRoundness(10);
@@ -1183,7 +1187,8 @@ void ResoModule::setupGUI()
 
 	AeroButton * tones_button = new AeroButton();
 	tones_button->setCheckable(true);
-	tones_button->setHighlight(QColor(2, 135, 237));
+	QColor tones_highlight_color = QColor(2, 135, 237);
+	tones_button->setHighlight(tones_highlight_color);
 	tones_button->setMinimumHeight(40);
 	tones_button->setMaximumWidth(80);
 	tones_button->setRoundness(10);
@@ -1192,7 +1197,8 @@ void ResoModule::setupGUI()
 
 	AeroButton * music_button = new AeroButton();
 	music_button->setCheckable(true);
-	music_button->setHighlight(QColor(175, 0, 175));
+	QColor music_highlight_color = QColor(175, 0, 175);
+	music_button->setHighlight(music_highlight_color);
 	music_button->setMinimumHeight(40);
 	music_button->setMaximumWidth(80);
 	music_button->setRoundness(10);
@@ -1201,7 +1207,8 @@ void ResoModule::setupGUI()
 
 	AeroButton * personal_button = new AeroButton();
 	personal_button->setCheckable(true);
-	personal_button->setHighlight(QColor(Qt::red));
+	QColor personal_highlight_color = QColor(Qt::red);
+	personal_button->setHighlight(personal_highlight_color);
 	personal_button->setMinimumHeight(40);
 	personal_button->setMaximumWidth(80);
 	personal_button->setRoundness(10);

@@ -1,6 +1,6 @@
 
 #include <QtGui>
-#include "aerobutton.h"
+#include "AeroButton.h"
 #include "drawerwidget.h"
 
 DrawerWidget::DrawerWidget(QWidget *parent) : QWidget(parent)
@@ -17,10 +17,11 @@ DrawerWidget::DrawerWidget(QWidget *parent) : QWidget(parent)
 	//m_open->setColor(QColor(Qt::darkGreen));
 	//m_open->setShadow(QColor(Qt::black));
 	//m_open->setHighlight(QColor(Qt::green));
-	m_open->setHighlight(QColor(Qt::white));
+	QColor white = QColor(Qt::white);
+	m_open->setHighlight(white);
 	m_open->setRoundness(100);
 	m_open->setOpacity(1.0);
-	m_open->setOutlineOpacity(0.0);
+	//m_open->setOutlineOpacity(0.0);
 	m_open->resize(19, 19);
 	connect(m_open, SIGNAL(clicked()), this, SLOT(openDrawer()));
 
@@ -28,10 +29,10 @@ DrawerWidget::DrawerWidget(QWidget *parent) : QWidget(parent)
 	//m_close->setColor(QColor(Qt::darkRed));
 	//m_close->setShadow(QColor(Qt::black));
 	//m_close->setHighlight(QColor(Qt::red));
-	m_close->setHighlight(QColor(Qt::white));
+	m_close->setHighlight(white);
 	m_close->setRoundness(100);
 	m_close->setOpacity(1.0);
-	m_close->setOutlineOpacity(0.0);
+	//m_close->setOutlineOpacity(0.0);
 	m_close->resize(19, 19);
 	connect(m_close, SIGNAL(clicked()), this, SLOT(closeDrawer()));
 

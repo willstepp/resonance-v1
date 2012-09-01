@@ -138,35 +138,35 @@ void FMOD_Sound::addEffect(int module_id, int type, float value)
 
 	switch(type)
 	{
-		case Effect::Reverb:
+		case Reverb:
 			FMOD::DSP * reverb;
 			system->createDSPByType(FMOD_DSP_TYPE_REVERB, &reverb);
 			channelMap[module_id]->addDSP(reverb, 0);
 			reverb->setParameter(FMOD_DSP_REVERB_ROOMSIZE, normalized_value);
 			reverbMap[module_id] = reverb;
 			break;
-		case Effect::Pitch:
+		case Pitch:
 			FMOD::DSP * pitch;
 			system->createDSPByType(FMOD_DSP_TYPE_PITCHSHIFT, &pitch);
 			channelMap[module_id]->addDSP(pitch, 0);
 			pitch->setParameter(0, normalized_value);
 			pitchMap[module_id] = pitch;
 			break;
-		case Effect::Distortion:
+		case Distortion:
 			FMOD::DSP * distortion;
 			system->createDSPByType(FMOD_DSP_TYPE_DISTORTION, &distortion);
 			channelMap[module_id]->addDSP(distortion, 0);
 			distortion->setParameter(0, normalized_value);
 			distortionMap[module_id] = distortion;
 			break;
-		case Effect::Echo:
+		case Echo:
 			FMOD::DSP * echo;
 			system->createDSPByType(FMOD_DSP_TYPE_ECHO, &echo);
 			channelMap[module_id]->addDSP(echo, 0);
 			echo->setParameter(0, normalized_value);
 			echoMap[module_id] = echo;
 			break;
-		case Effect::Flange:
+		case Flange:
 			FMOD::DSP * flange;
 			system->createDSPByType(FMOD_DSP_TYPE_FLANGE, &flange);
 			channelMap[module_id]->addDSP(flange, 0);
@@ -182,31 +182,31 @@ void FMOD_Sound::removeEffect(int module_id, int type)
 {
 	switch(type)
 	{
-		case Effect::Reverb:
+		case Reverb:
 			if(reverbMap.contains(module_id))
 			{
 				reverbMap[module_id]->remove();
 			}
 			break;
-		case Effect::Pitch:
+		case Pitch:
 			if(pitchMap.contains(module_id))
 			{
 				pitchMap[module_id]->remove();
 			}
 			break;
-		case Effect::Distortion:
+		case Distortion:
 			if(distortionMap.contains(module_id))
 			{
 				distortionMap[module_id]->remove();
 			}
 			break;
-		case Effect::Echo:
+		case Echo:
 			if(echoMap.contains(module_id))
 			{
 				echoMap[module_id]->remove();
 			}
 			break;
-		case Effect::Flange:
+		case Flange:
 			if(flangeMap.contains(module_id))
 			{
 				flangeMap[module_id]->remove();
@@ -223,31 +223,31 @@ void FMOD_Sound::setEffectValue(int module_id, int type, float new_value)
 
 	switch(type)
 	{
-		case Effect::Reverb:
+		case Reverb:
 			if(reverbMap.contains(module_id))
 			{
 				reverbMap[module_id]->setParameter(FMOD_DSP_REVERB_ROOMSIZE, normalized_value);
 			}
 			break;
-		case Effect::Pitch:
+		case Pitch:
 			if(pitchMap.contains(module_id))
 			{
 				pitchMap[module_id]->setParameter(0, normalized_value);
 			}
 			break;
-		case Effect::Distortion:
+		case Distortion:
 			if(distortionMap.contains(module_id))
 			{
 				distortionMap[module_id]->setParameter(0, normalized_value);
 			}
 			break;
-		case Effect::Echo:
+		case Echo:
 			if(echoMap.contains(module_id))
 			{
 				echoMap[module_id]->setParameter(0, normalized_value);
 			}
 			break;
-		case Effect::Flange:
+		case Flange:
 			if(flangeMap.contains(module_id))
 			{
 				flangeMap[module_id]->setParameter(0, normalized_value);
